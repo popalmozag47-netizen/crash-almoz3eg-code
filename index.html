@@ -3,244 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALMOZAG - المنصة الرسمية</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&display=swap" rel="stylesheet">
+<title>ALMOZAG</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@800&display=swap');
 *{box-sizing:border-box;font-family:'Cairo',sans-serif}
-body{margin:0;background:#060a14;color:#eaf0ff}
-header{padding:16px;text-align:center;background:#0b1325;border-bottom:1px solid #1f2f52;position:sticky;top:0;z-index:99}
-.logo{font-weight:900;font-size:22px;color:#4f8cff}
-.sub{font-size:11px;color:#8ea0bf}
-.tabs{display:flex;gap:6px;justify-content:center;padding:10px;flex-wrap:wrap;background:#080e1d;position:sticky;top:68px;z-index:98}
-.tab{padding:8px 14px;border-radius:20px;border:1px solid #24365c;background:#111c33;cursor:pointer;font-size:13px;font-weight:700}
-.tab.active{background:#3b82f6;border-color:#3b82f6;color:white}
-.container{max-width:1200px;margin:0 auto;padding:14px}
-.panel{background:#0f1a31;border:1px solid #23365f;border-radius:16px;padding:14px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:800px){.grid{grid-template-columns:1fr}}
-textarea{width:100%;height:380px;background:#060a14;color:#cbd5e1;border:1px solid #24365c;border-radius:12px;padding:10px;font-family:monospace;direction:ltr;text-align:left;font-size:13px}
-iframe{width:100%;height:380px;background:white;border-radius:12px;border:none}
-.btns{display:flex;gap:8px;margin-top:8px}
-.btn{flex:1;padding:10px;border:none;border-radius:10px;font-weight:900;cursor:pointer}
+body{margin:0;background:#070b16;color:#e8eeff}
+header{padding:14px;text-align:center;background:#0e1931}
+.tabs{display:flex;gap:6px;justify-content:center;padding:10px;flex-wrap:wrap}
+.tab{padding:8px 16px;border-radius:20px;background:#16244a;border:1px solid #2a3d6e;cursor:pointer;font-size:13px}
+.tab.active{background:#3b82f6;color:white}
+.panel{background:#101c38;border:1px solid #2a3d6e;border-radius:14px;padding:12px;margin:10px}
+textarea{width:100%;height:300px;background:#060a14;color:#cbd5e1;border:1px solid #2a3d6e;border-radius:10px;padding:10px;direction:ltr;text-align:left;font-family:monospace}
+iframe{width:100%;height:300px;background:white;border-radius:10px;border:none}
+.btn{padding:10px 20px;border:none;border-radius:10px;font-weight:900;cursor:pointer}
 .run{background:#3b82f6;color:white}
-.clear{background:#1e2a47;color:white}
-.chat{height:400px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:10px;background:#060a14;border-radius:12px;border:1px solid #24365c}
-.msg{display:flex;gap:8px}
-.bubble{padding:10px 14px;border-radius:14px;max-width:85%;line-height:1.7;background:#1a2746;font-size:13px;white-space:pre-wrap}
-.user{justify-content:flex-end}
-.user .bubble{background:#1d3a8a}
-.inputRow{display:flex;gap:8px;margin-top:10px}
-.inputRow input{flex:1;padding:12px;border-radius:12px;border:1px solid #24365c;background:#060a14;color:white;outline:none}
-.card{background:#060a14;border:1px solid #24365c;border-radius:12px;padding:12px;margin:8px 0}
-.red{color:#ff5c5c}
-.blue{color:#60a5fa}
-.green{color:#34d399}
-.kbd{background:#111c33;padding:2px 6px;border-radius:6px;border:1px solid #24365c;font-size:11px}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">ALMOZAG 👑 CRASH AL-MOZ3EG CODE</div>
-<div class="sub">المنصة الرسمية لتطوير الأكواد + الذكاء الاصطناعي + الهاكر الأخلاقي 💻🔥</div>
+<h2 style="margin:0;color:#5a8bff">ALMOZAG CRASH AL-MOZ3EG CODE</h2>
+<p style="margin:4px 0 0;font-size:11px;color:#8aa0c5">المنصة الرسمية - اكواد + ذكاء اصطناعي + هاكر اخلاقي</p>
 </header>
 
 <div class="tabs">
-<div class="tab active" onclick="show('editor',this)">💻 محرر الأكواد</div>
-<div class="tab" onclick="show('ai',this)">🤖 ALMOZAG AI</div>
-<div class="tab" onclick="show('hack',this)">🛡️ هاكر أخلاقي</div>
-<div class="tab" onclick="show('about',this)">ℹ️ عن المنصة</div>
+<div class="tab active" id="t1" onclick="showTab('editor','t1')">محرر الاكواد</div>
+<div class="tab" id="t2" onclick="showTab('ai','t2')">ALMOZAG AI</div>
+<div class="tab" id="t3" onclick="showTab('hack','t3')">هاكر اخلاقي</div>
 </div>
 
-<div class="container">
-
-<!-- EDITOR -->
 <div id="editor">
-<div class="grid">
-<div class="panel"><b class="blue">✍️ الكود</b>
-<textarea id="code"><h1 style="text-align:center;color:#3b82f6">مرحبا يا بوب! 👑</h1>
-<p style="text-align:center">منصة ALMOZAG الرسمية اشتغلت!</p>
-<button onclick="alert('ALMOZAG الأسطورة 🔥')" style="display:block;margin:15px auto;padding:10px 20px;background:#3b82f6;color:white;border:none;border-radius:10px">دوس هنا</button></textarea>
-<div class="btns"><button class="btn run" onclick="runCode()">▶ تشغيل</button><button class="btn clear" onclick="clearCode()">🗑 مسح</button></div>
+<div class="panel">
+<textarea id="code"><h1 style="text-align:center;color:#3b82f6">Welcome POP!</h1>
+<p style="text-align:center">ALMOZAG Platform Working!</p>
+<button onclick="alert('ALMOZAG LEGEND')" style="display:block;margin:20px auto;padding:12px 25px;background:#3b82f6;color:white;border:none;border-radius:10px">Click Me</button>
+</textarea>
+<br><br>
+<button class="btn run" onclick="run()">▶ تشغيل</button>
 </div>
-<div class="panel"><b class="blue">👀 النتيجة المباشرة</b><iframe id="prev"></iframe></div>
-</div>
+<div class="panel"><iframe id="out"></iframe></div>
 </div>
 
-<!-- AI -->
 <div id="ai" style="display:none">
 <div class="panel">
-<div class="chat" id="chatBox">
-<div class="msg"><div class="bubble">أهلا يا بوب! أنا ALMOZAG AI 🤖🔥<br>اسألني: اعملي لعبة، اعملي بورتفوليو، اشرحلي ثغرة XSS<br>وأنا هديك كود شغال تاخده للمحرر!</div></div>
-</div>
-<div class="inputRow">
-<input id="q" placeholder="اكتب: اعملي كود لعبة XO..." onkeydown="if(event.key==='Enter')ask()">
-<button class="btn run" style="flex:0 0 90px" onclick="ask()">إرسال 🚀</button>
-</div>
+<div id="chat" style="height:300px;overflow-y:auto;background:#060a14;padding:10px;border-radius:10px">أهلا يا بوب! انا ALMOZAG AI جاهز!</div>
+<br>
+<input id="q" placeholder="اسألني..." style="width:70%;padding:10px;border-radius:10px;border:1px solid #2a3d6e;background:#060a14;color:white">
+<button class="btn run" onclick="ask()">ارسال</button>
 </div>
 </div>
 
-<!-- HACK -->
 <div id="hack" style="display:none">
-<div class="panel" style="line-height:2">
-
-<div class="card" style="text-align:center;border-color:#3b82f6">
-<h3 style="margin:0;color:#60a5fa">📡 عنوانك على الإنترنت</h3>
-<div id="myIp" style="font-size:18px;font-weight:900;margin:8px 0">جاري جلب الـ IP...</div>
-<div style="font-size:11px;color:#8ea0bf">ده الـ Public IP بتاعك - بيظهر لكل المواقع</div>
-<button class="btn clear" style="margin-top:8px" onclick="getIp()">🔄 تحديث الـ IP</button>
+<div class="panel" style="text-align:center">
+<h3>عنوانك على النت IP</h3>
+<h2 id="ip">...جاري التحميل</h2>
+<button class="btn run" onclick="getIp()">تحديث</button>
+<br><br>
+<p style="font-size:12px">XSS - SQL Injection - Nmap - Wireshark</p>
+<p style="font-size:11px;color:#ff6b6b">للتعليم فقط على موقعك انت - ممنوع تجرب على مواقع الغير</p>
 </div>
-
-<div class="grid">
-<div class="card">
-<b class="blue">🔍 فاحص الثغرات التعليمي</b><br>
-<span style="font-size:12px;color:#8ea0bf">اكتب رابط موقعك انت (للتعليم فقط)</span>
-<input id="scanUrl" placeholder="https://example.com" style="width:100%;padding:8px;border-radius:8px;border:1px solid #24365c;background:#060a14;color:white;margin-top:6px;direction:ltr">
-<button class="btn run" style="margin-top:8px;width:100%" onclick="fakeScan()">افحص موقعي 🛡️</button>
-<div id="scanResult" style="font-size:12px;margin-top:8px"></div>
-</div>
-
-<div class="card">
-<b class="green">🧪 معمل تشفير وفك تشفير</b><br>
-<input id="encInput" placeholder="اكتب نص هنا" style="width:100%;padding:8px;border-radius:8px;border:1px solid #24365c;background:#060a14;color:white;margin-top:6px">
-<div class="btns"><button class="btn clear" onclick="doEnc('base64')">Base64</button><button class="btn clear" onclick="doEnc('hash')">Hash</button></div>
-<div id="encOut" style="font-size:11px;margin-top:8px;word-break:break-all;background:#060a14;padding:6px;border-radius:8px;direction:ltr"></div>
-</div>
-</div>
-
-<div class="card">
-<b class="red">🎓 أهم الثغرات لازم تعرفها</b><br>
-<div style="font-size:13px">
-<b>1. XSS:</b> <span class="kbd">&lt;script&gt;alert(1)&lt;/script&gt;</span> - الحل: فلتر المدخلات بـ <span class="kbd">htmlspecialchars</span><br>
-<b>2. SQL Injection:</b> <span class="kbd">' OR '1'='1</span> - الحل: استخدم <span class="kbd">Prepared Statements</span><br>
-<b>3. IP Spoofing:</b> تغيير الـ IP - بنكشفه بـ Wireshark<br>
-<b>4. Port Scanning:</b> بنستخدم Nmap لفحص منافذ سيرفرنا احنا فقط: <span class="kbd">nmap 127.0.0.1</span>
-</div>
-</div>
-
-<div class="card" style="border-color:#ef4444;background:#1a0a0a;text-align:center">
-⚠️ <b class="red">تنبيه قانوني - Ethical Hacking فقط</b><br>
-<span style="font-size:12px">كل الأدوات هنا للتعليم وحماية مواقعك أنت فقط. ممنوع تجربتها على مواقع الغير بدون إذن كتابي. أنت مسؤول قانونياً.</span>
-</div>
-
-</div>
-</div>
-
-<!-- ABOUT -->
-<div id="about" style="display:none">
-<div class="panel" style="text-align:center;line-height:2.2">
-<h2 style="color:#60a5fa">عن المنصة</h2>
-<b>ALMOZAG - المنصة الرسمية</b><br>
-منصة متكاملة: محرر أكواد + ذكاء اصطناعي + أكاديمية هاكر أخلاقي<br>
-المطور: POP AL-MOZAG - طرسا، الفيوم 👑<br>
-الإصدار: V2.0 الرسمي - 2026<br>
-السيرفر: GitHub Pages + Cloudflare
-</div>
-</div>
-
 </div>
 
 <script>
-// Tabs
-function show(id,el){
-['editor','ai','hack','about'].forEach(x=>document.getElementById(x).style.display='none');
+function showTab(id,tid){
+document.getElementById('editor').style.display='none';
+document.getElementById('ai').style.display='none';
+document.getElementById('hack').style.display='none';
 document.getElementById(id).style.display='block';
 document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-el.classList.add('active');
-if(id==='editor') runCode();
+document.getElementById(tid).classList.add('active');
+if(id==='editor') run();
 if(id==='hack') getIp();
 }
-function runCode(){document.getElementById('prev').srcdoc=document.getElementById('code').value}
-function clearCode(){document.getElementById('code').value='';runCode()}
-
-// AI Logic - شغال بجد مش شكل
+function run(){document.getElementById('out').srcdoc=document.getElementById('code').value}
 function ask(){
-let inp=document.getElementById('q'); let txt=inp.value.trim(); if(!txt) return;
-let chat=document.getElementById('chatBox');
-chat.innerHTML+=`<div class="msg user"><div class="bubble">${txt}</div></div>`;
-inp.value='';
-let low=txt.toLowerCase();
-let reply='';
-if(low.includes('لعبة')||low.includes('xo')||low.includes('game')){
-reply=`ده كود لعبة XO شغال بجد، انسخه للمحرر:
-
-<div style="text-align:center"><h2 id="t">XO Game</h2><div id="b" style="display:grid;grid-template-columns:repeat(3,60px);gap:5px;justify-content:center"><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button><button onclick="p(this)" style="width:60px;height:60px;font-size:20px"></button></div></div><script>let c='X';function p(b){if(b.textContent==''){b.textContent=c;c=c=='X'?'O':'X';}}<\/script>
-
-انسخه وجرب!`;
-}else if(low.includes('بورتفوليو')||low.includes('portfolio')){
-reply=`كود بورتفوليو فخم شغال:
-
-<h1 style="text-align:center;color:#3b82f6">POP AL-MOZAG 👑</h1><p style="text-align:center">مطور مواقع من الفيوم - هاكر أخلاقي</p><div style="display:flex;gap:10px;justify-content:center"><a href="#" style="padding:10px 20px;background:#3b82f6;color:white;border-radius:10px;text-decoration:none">أعمالي</a><a href="#" style="padding:10px 20px;background:#1e2a47;color:white;border-radius:10px;text-decoration:none">تواصل</a></div>`;
-}else if(low.includes('xss')||low.includes('ثغرة')){
-reply=`شرح XSS باختصار:
-
-1- المهاجم يكتب: <script>alert(document.cookie)</script> في تعليق
-2- لو الموقع مش مفلتر، الكود يشتغل عند كل زائر ويسرق الكوكيز
-الحماية:
-في PHP: echo htmlspecialchars($input);
-في JS: element.textContent = input (مش innerHTML)
-
-جرب بنفسك في المحرر!`;
-}else if(low.includes('ip')){
-reply=`الـ IP هو عنوان جهازك.
-
-Public IP بتاعك جبتهولك فوق في تبويب الهاكر الأخلاقي 👆
-تقدر تجيبه بكود JS:
-
-fetch('https://api.ipify.org?format=json')
-.then(r=>r.json())
-.then(d=>alert(d.ip))
-
-جرب الكود ده في المحرر!`;
-}else{
-reply=`فكرة جامدة: "${txt}" 🔥
-
-هعملك كود ليها:
-
-<div style="padding:20px;background:#0f172a;color:white;border-radius:15px;text-align:center">
-<h2>${txt}</h2>
-<p>تم التنفيذ بواسطة ALMOZAG AI</p>
-<button onclick="alert('اشتغل!')" style="padding:10px 20px;background:#3b82f6;color:white;border:none;border-radius:10px">جربني</button>
-</div>
-
-انسخه للمحرر وشوف النتيجة!`;
+let v=document.getElementById('q').value;
+if(!v) return;
+let c=document.getElementById('chat');
+c.innerHTML+='<div style="text-align:right;margin:8px 0"><span style="background:#1e3a8a;padding:8px 12px;border-radius:12px;display:inline-block">'+v+'</span></div>';
+document.getElementById('q').value='';
+setTimeout(()=>{c.innerHTML+='<div style="margin:8px 0"><span style="background:#1a2746;padding:8px 12px;border-radius:12px;display:inline-block">فكرة جامدة! خد الكود ده وحطه في المحرر:<br>&lt;h1&gt;'+v+'&lt;/h1&gt;</span></div>';c.scrollTop=c.scrollHeight},400);
 }
-setTimeout(()=>{chat.innerHTML+=`<div class="msg"><div class="bubble">${reply}</div></div>`; chat.scrollTop=chat.scrollHeight;},400);
-chat.scrollTop=chat.scrollHeight;
-}
-
-// Hack tools - شغالة بجد
 async function getIp(){
-let el=document.getElementById('myIp');
 try{
 let r=await fetch('https://api.ipify.org?format=json');
 let d=await r.json();
-el.innerText=d.ip;
-}catch{el.innerText='مش قادر أجيب الـ IP (افتح النت)';}
+document.getElementById('ip').innerText=d.ip;
+}catch{document.getElementById('ip').innerText='افتح النت';}
 }
-function fakeScan(){
-let url=document.getElementById('scanUrl').value.trim();
-let out=document.getElementById('scanResult');
-if(!url){out.innerHTML='<span class="red">اكتب رابط موقعك الأول</span>';return;}
-out.innerHTML='⏳ جاري فحص '+url+' ...';
-setTimeout(()=>{
-out.innerHTML=`✅ نتائج الفحص التعليمي لـ ${url}:<br>
-- HTTPS: ${url.startsWith('https')?'✅ شغال':'⚠️ مش شغال - ركب شهادة SSL'}<br>
-- X-XSS-Protection: ⚠️ يفضل تفعيله<br>
-- SQL Injection: ✅ محمي (لو بتستخدم Prepared Statements)<br>
-<b class="green">نصيحة:</b> استخدم موقع <span class="kbd">securityheaders.com</span> لفحص حقيقي`;
-},1500);
-}
-function doEnc(type){
-let v=document.getElementById('encInput').value;
-let out=document.getElementById('encOut');
-if(!v){out.innerText='اكتب نص الأول';return;}
-if(type==='base64'){try{out.innerText='Base64: '+btoa(unescape(encodeURIComponent(v)))}catch{out.innerText='خطأ'}}else{
-let h=0;for(let i=0;i<v.length;i++){h=((h<<5)-h)+v.charCodeAt(i);h|=0;}
-out.innerText='Hash (تعليمي): '+Math.abs(h).toString(16);
-}
-}
-
-window.onload=()=>{runCode();getIp();}
+window.onload=run;
 </script>
 </body>
 </html>
