@@ -2,54 +2,44 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ALMOZAG</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
-body{background:#070b18;color:white;width:100vw;overflow-x:hidden}
-header{background:#0f1b36;padding:15px;text-align:center;width:100%}
-header h1{color:#4f8cff;font-size:5vw}
-header p{font-size:3.5vw;color:#8aa0c5}
-.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px;background:#0b142a;width:100%}
-.tab{flex:1;min-width:45%;padding:12px;text-align:center;background:#1a2a4d;border-radius:12px;font-weight:900;font-size:14px}
+body{background:#070b18;color:white;width:100%}
+header{background:#0f1b36;padding:15px;text-align:center}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;padding:10px;background:#0b142a}
+.tab{flex:1;padding:14px;text-align:center;background:#1a2a4d;border-radius:12px;font-weight:900}
 .tab.active{background:#3b82f6}
-.box{width:96%;margin:10px auto;background:#122042;border:1px solid #2a3d6e;border-radius:14px;padding:10px}
-textarea{width:100%;height:45vh;background:#050a14;color:#9ec1ff;border:1px solid #2a3d6e;border-radius:10px;padding:10px;font-family:monospace;font-size:14px;direction:ltr}
+.box{width:96%;margin:12px auto;background:#122042;border-radius:14px;padding:12px;border:1px solid #2a3d6e}
+textarea{width:100%;height:45vh;background:#050a14;color:#9ec1ff;border-radius:10px;padding:12px;direction:ltr;font-size:14px}
 iframe{width:100%;height:40vh;background:white;border-radius:10px;border:none}
 .btn{width:100%;padding:14px;background:#3b82f6;color:white;border:none;border-radius:12px;font-weight:900;font-size:16px;margin-top:10px}
-#chat{height:50vh;overflow:auto;background:#050a14;border-radius:10px;padding:10px}
-.msg{margin:8px 0;padding:10px;border-radius:10px;background:#1a2a4d}
-input{width:100%;padding:12px;border-radius:10px;border:1px solid #2a3d6e;background:#050a14;color:white;margin-top:10px}
 </style>
 </head>
 <body>
-
 <header>
-<h1>ALMOZAG CRASH CODE 👑</h1>
-<p>المنصة الرسمية - برمجة + ذكاء اصطناعي + هاكر اخلاقي</p>
+<h2 style="color:#5a8bff">👑 ALMOZAG CRASH CODE</h2>
+<p style="font-size:12px;color:#8aa0c5">المنصة الرسمية - برمجة + ذكاء اصطناعي + هاكر اخلاقي</p>
 </header>
-
 <div class="tabs">
-<div class="tab active" onclick="openTab('editor',this)">💻 محرر الاكواد</div>
-<div class="tab" onclick="openTab('ai',this)">🤖 ALMOZAG AI</div>
-<div class="tab" onclick="openTab('hack',this)">🛡️ هاكر اخلاقي</div>
+<div class="tab active" onclick="showTab('editor',this)">💻 محرر الاكواد</div>
+<div class="tab" onclick="showTab('ai',this)">🤖 ALMOZAG AI</div>
+<div class="tab" onclick="showTab('hack',this)">🛡️ هاكر اخلاقي</div>
 </div>
 
 <div id="editor">
 <div class="box">
-<textarea id="code"><h1 style="text-align:center;color:blue">Welcome POP ALMOZAG</h1>
-<p style="text-align:center">Platform is Working Now!</p>
-<button onclick="alert('Working 100%')" style="display:block;margin:20px auto;padding:15px;background:blue;color:white;border-radius:10px">Click Here</button>
-</textarea>
-<button class="btn" onclick="runCode()">▶ تشغيل الكود - دوس هنا</button>
+<textarea id="code"></textarea>
+<button class="btn" onclick="runCode()">▶ تشغيل الكود</button>
 </div>
 <div class="box"><iframe id="result"></iframe></div>
 </div>
 
 <div id="ai" style="display:none">
 <div class="box">
-<div id="chat"><div class="msg">انا ALMOZAG AI جاهز! اكتب اي حاجة</div></div>
-<input id="q" placeholder="اعملي لعبة...">
+<div id="chat" style="height:45vh;overflow:auto;background:#050a14;padding:10px;border-radius:10px"><div style="padding:10px;background:#1a2a4d;border-radius:10px">انا ALMOZAG AI جاهز! اكتب: اعملي لعبة</div></div>
+<input id="q" placeholder="اعملي لعبة..." style="width:100%;padding:12px;border-radius:10px;background:#050a14;color:white;border:1px solid #2a3d6e;margin-top:10px">
 <button class="btn" onclick="send()">ارسال</button>
 </div>
 </div>
@@ -57,16 +47,19 @@ input{width:100%;padding:12px;border-radius:10px;border:1px solid #2a3d6e;backgr
 <div id="hack" style="display:none">
 <div class="box" style="text-align:center">
 <h2>IP بتاعك</h2>
-<h1 id="ip" style="color:#4f8cff">...</h1>
+<h1 id="ip" style="color:#4f8cff;margin:10px 0">...</h1>
 <button class="btn" onclick="getIp()">جيب الـ IP</button>
-<br><br>
-<p>XSS | SQL Injection | Nmap | IP</p>
-<p style="color:red;font-size:12px;margin-top:10px">للتعليم فقط - ممنوع تجرب على مواقع الغير</p>
+<p style="margin-top:15px">XSS | SQL Injection | Nmap | IP</p>
+<p style="color:red;font-size:11px">للتعليم فقط</p>
 </div>
 </div>
 
 <script>
-function openTab(id,el){
+// هنا بنحط الكود بالجافاسكريبت عشان ميبوظش الصفحة
+var defaultCode = '<h1 style="text-align:center;color:blue">Welcome POP!</h1>\n<p style="text-align:center">Platform Working 100%!</p>\n<button onclick="alert(\'ALMOZAG LEGEND\')" style="display:block;margin:20px auto;padding:15px;background:blue;color:white;border-radius:10px">Click Me</button>';
+document.getElementById('code').value = defaultCode;
+
+function showTab(id,el){
 document.getElementById('editor').style.display='none';
 document.getElementById('ai').style.display='none';
 document.getElementById('hack').style.display='none';
@@ -77,26 +70,25 @@ if(id=='editor') runCode();
 if(id=='hack') getIp();
 }
 function runCode(){
-var c=document.getElementById('code').value;
-document.getElementById('result').srcdoc=c;
+document.getElementById('result').srcdoc=document.getElementById('code').value;
 }
 function send(){
 var v=document.getElementById('q').value;
 if(!v) return;
-var chat=document.getElementById('chat');
-chat.innerHTML+='<div class=msg style="background:#143080;text-align:right">'+v+'</div>';
+var c=document.getElementById('chat');
+c.innerHTML+='<div style="margin:8px 0;text-align:right"><span style="background:#143080;padding:8px 12px;border-radius:10px;display:inline-block">'+v+'</span></div>';
 document.getElementById('q').value='';
-chat.innerHTML+='<div class=msg>خد الكود ده حطه في المحرر:<br>&lt;h1&gt;'+v+'&lt;/h1&gt;</div>';
-chat.scrollTop=chat.scrollHeight;
+c.innerHTML+='<div style="margin:8px 0"><span style="background:#1a2a4d;padding:8px 12px;border-radius:10px;display:inline-block">فكرة: '+v+' - هحطلك كود ليها في المحرر!</span></div>';
+c.scrollTop=c.scrollHeight;
 }
 async function getIp(){
 try{
 let r=await fetch('https://api.ipify.org?format=json');
 let j=await r.json();
 document.getElementById('ip').innerText=j.ip;
-}catch(e){document.getElementById('ip').innerText='شغل النت';}
+}catch{document.getElementById('ip').innerText='شغل النت';}
 }
-window.onload=function(){runCode(); getIp();}
+window.onload=function(){runCode();getIp();}
 </script>
 </body>
 </html>
