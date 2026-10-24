@@ -3,90 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALMOZAG</title>
+<title>ALMOZAG ACADEMY</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
 body{background:#070b18;color:white;width:100%}
 header{background:#0f1b36;padding:15px;text-align:center}
-.tabs{display:flex;flex-wrap:wrap;gap:8px;padding:10px;background:#0b142a}
-.tab{flex:1;padding:14px;text-align:center;background:#1a2a4d;border-radius:12px;font-weight:900}
+.tabs{display:flex;gap:6px;padding:10px;background:#0b142a}
+.tab{flex:1;padding:12px;text-align:center;background:#1a2a4d;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer}
 .tab.active{background:#3b82f6}
-.box{width:96%;margin:12px auto;background:#122042;border-radius:14px;padding:12px;border:1px solid #2a3d6e}
-textarea{width:100%;height:45vh;background:#050a14;color:#9ec1ff;border-radius:10px;padding:12px;direction:ltr;font-size:14px}
-iframe{width:100%;height:40vh;background:white;border-radius:10px;border:none}
-.btn{width:100%;padding:14px;background:#3b82f6;color:white;border:none;border-radius:12px;font-weight:900;font-size:16px;margin-top:10px}
+.box{width:96%;margin:10px auto;background:#122042;border-radius:14px;padding:14px;border:1px solid #2a3d6e}
+textarea{width:100%;height:40vh;background:#050a14;color:#9ec1ff;border-radius:10px;padding:10px;direction:ltr}
+iframe{width:100%;height:35vh;background:white;border-radius:10px;border:none}
+.btn{width:100%;padding:13px;background:#3b82f6;color:white;border:none;border-radius:10px;font-weight:900;margin-top:8px}
+.lab{background:#050a14;border-radius:10px;padding:12px;margin-top:10px;border:1px dashed #2a3d6e}
+input{width:100%;padding:10px;border-radius:8px;background:#070b18;color:white;border:1px solid #2a3d6e;margin-top:6px}
+.result{margin-top:8px;padding:8px;border-radius:8px;background:#0b142a;font-size:13px}
 </style>
 </head>
 <body>
-<header>
-<h2 style="color:#5a8bff">👑 ALMOZAG CRASH CODE</h2>
-<p style="font-size:12px;color:#8aa0c5">المنصة الرسمية - برمجة + ذكاء اصطناعي + هاكر اخلاقي</p>
-</header>
+<header><h2 style="color:#5a8bff">👑 ALMOZAG - اكاديمية الهاكر الاخلاقي</h2><p style="font-size:11px;color:#8aa0c5">تعليم حماية حقيقي - مش شكل</p></header>
+
 <div class="tabs">
-<div class="tab active" onclick="showTab('editor',this)">💻 محرر الاكواد</div>
-<div class="tab" onclick="showTab('ai',this)">🤖 ALMOZAG AI</div>
-<div class="tab" onclick="showTab('hack',this)">🛡️ هاكر اخلاقي</div>
+<div class="tab active" onclick="show('editor',this)">💻 كود</div>
+<div class="tab" onclick="show('ai',this)">🤖 AI</div>
+<div class="tab" onclick="show('hack',this)">🛡️ تعليم هاكر</div>
 </div>
 
 <div id="editor">
 <div class="box">
 <textarea id="code"></textarea>
-<button class="btn" onclick="runCode()">▶ تشغيل الكود</button>
+<button class="btn" onclick="runCode()">▶ تشغيل</button>
 </div>
 <div class="box"><iframe id="result"></iframe></div>
 </div>
 
 <div id="ai" style="display:none">
 <div class="box">
-<div id="chat" style="height:45vh;overflow:auto;background:#050a14;padding:10px;border-radius:10px"><div style="padding:10px;background:#1a2a4d;border-radius:10px">انا ALMOZAG AI جاهز! اكتب: اعملي لعبة</div></div>
-<input id="q" placeholder="اعملي لعبة..." style="width:100%;padding:12px;border-radius:10px;background:#050a14;color:white;border:1px solid #2a3d6e;margin-top:10px">
-<button class="btn" onclick="send()">ارسال</button>
+<div id="chat" style="height:40vh;overflow:auto;background:#050a14;padding:10px;border-radius:10px"><div style="padding:10px;background:#1a2a4d;border-radius:10px">انا ALMOZAG AI - اسألني عن اي ثغرة</div></div>
+<input id="q" placeholder="اشرحلي ثغرة XSS..."><button class="btn" onclick="send()">ارسال</button>
 </div>
 </div>
 
 <div id="hack" style="display:none">
-<div class="box" style="text-align:center">
-<h2>IP بتاعك</h2>
-<h1 id="ip" style="color:#4f8cff;margin:10px 0">...</h1>
-<button class="btn" onclick="getIp()">جيب الـ IP</button>
-<p style="margin-top:15px">XSS | SQL Injection | Nmap | IP</p>
-<p style="color:red;font-size:11px">للتعليم فقط</p>
+<!-- LAB 1 -->
+<div class="box">
+<h3 style="color:#4f8cff">1- عنوانك الحقيقي IP + درس الشبكات</h3>
+<p style="font-size:12px;color:#8aa0c5">الـ IP هو عنوان جهازك. شوف بتاعك:</p>
+<h2 id="ip" style="color:#4f8cff;text-align:center;margin:8px 0">...</h2>
+<button class="btn" onclick="getIp()">تحديث الـ IP</button>
+<div class="lab">📚 <b>معلومة:</b> لو IP بتاعك 192.168.x.x ده Private جوه الراوتر. لو غير كده ده Public. الهاكر الاخلاقي لازم يعرف يفرق.</div>
+</div>
+
+<!-- LAB 2 -->
+<div class="box">
+<h3 style="color:#22c55e">2- معمل فحص قوة الباسورد (شغال بجد)</h3>
+<input id="pass" placeholder="اكتب باسورد هنا مثلا: pop123" oninput="checkPass()">
+<div id="passRes" class="result">اكتب باسورد عشان افحصه</div>
+<div class="lab">🔐 <b>الدرس:</b> باسورد قوي لازم يكون +8 حروف + رقم + حرف كابيتال + رمز @#$</div>
+</div>
+
+<!-- LAB 3 -->
+<div class="box">
+<h3 style="color:#f87171">3- معمل XSS - جرب بنفسك (آمن 100%)</h3>
+<p style="font-size:12px">اكتب كود في الخانة وشوف الفرق:</p>
+<input id="xss" placeholder="جرب اكتب: <script>alert(1)</script>">
+<button class="btn" style="background:#1e293b" onclick="testXss()">جرب بطريقة خطيرة (innerHTML)</button>
+<button class="btn" style="background:#15803d" onclick="testXssSafe()">جرب بطريقة محمية (textContent)</button>
+<div id="xssRes" class="result"></div>
+<div class="lab">💡 <b>الدرس:</b> المواقع المحمية بتستخدم textContent مش innerHTML عشان متتنفذش الاكواد الخبيثة.</div>
+</div>
+
+<!-- LAB 4 -->
+<div class="box">
+<h3 style="color:#facc15">4- كاشف الروابط المزيفة Phishing</h3>
+<input id="url" placeholder="حط رابط هنا مثلا: http://faceb00k.com-login@hacker.ru">
+<button class="btn" style="background:#854d0e" onclick="checkUrl()">افحص الرابط</button>
+<div id="urlRes" class="result"></div>
+<div class="lab">🎣 <b>علامات التصيد:</b> فيه @ - فيه ارقام بدل حروف - http مش https - رابط طويل جدا</div>
+</div>
+
+<!-- LAB 5 -->
+<div class="box">
+<h3 style="color:#60a5fa">5- ادوات الهاكر الاخلاقي الحقيقية تتعلمها</h3>
+<div class="result" style="line-height:2">
+<b>Nmap:</b> nmap -sV 127.0.0.1 (فحص منافذ جهازك انت)<br>
+<b>SQLMap:</b> للكشف عن ثغرات SQL في موقعك انت<br>
+<b>Burp Suite:</b> برنامج يفحص الطلبات بينك وبين موقعك<br>
+<b>Wireshark:</b> بيشوف الترافيك اللي طالع من جهازك<br><br>
+<span style="color:#f87171">⚠️ كلها تستخدم بتصريح فقط على مواقعك. استخدامها على الغير جريمة.</span>
+</div>
 </div>
 </div>
 
 <script>
-// هنا بنحط الكود بالجافاسكريبت عشان ميبوظش الصفحة
-var defaultCode = '<h1 style="text-align:center;color:blue">Welcome POP!</h1>\n<p style="text-align:center">Platform Working 100%!</p>\n<button onclick="alert(\'ALMOZAG LEGEND\')" style="display:block;margin:20px auto;padding:15px;background:blue;color:white;border-radius:10px">Click Me</button>';
+var defaultCode = '<h1 style="text-align:center;color:blue">POP ALMOZAG Platform Working!</h1>\n<button onclick="alert(\'System OK\')" style="display:block;margin:20px auto;padding:15px;background:blue;color:white;border-radius:10px">Test</button>';
 document.getElementById('code').value = defaultCode;
-
-function showTab(id,el){
-document.getElementById('editor').style.display='none';
-document.getElementById('ai').style.display='none';
-document.getElementById('hack').style.display='none';
+function show(id,el){
+document.getElementById('editor').style.display='none';document.getElementById('ai').style.display='none';document.getElementById('hack').style.display='none';
 document.getElementById(id).style.display='block';
-document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-el.classList.add('active');
-if(id=='editor') runCode();
-if(id=='hack') getIp();
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+if(id=='editor') runCode(); if(id=='hack') getIp();
 }
-function runCode(){
-document.getElementById('result').srcdoc=document.getElementById('code').value;
-}
+function runCode(){document.getElementById('result').srcdoc=document.getElementById('code').value;}
 function send(){
-var v=document.getElementById('q').value;
-if(!v) return;
-var c=document.getElementById('chat');
-c.innerHTML+='<div style="margin:8px 0;text-align:right"><span style="background:#143080;padding:8px 12px;border-radius:10px;display:inline-block">'+v+'</span></div>';
-document.getElementById('q').value='';
-c.innerHTML+='<div style="margin:8px 0"><span style="background:#1a2a4d;padding:8px 12px;border-radius:10px;display:inline-block">فكرة: '+v+' - هحطلك كود ليها في المحرر!</span></div>';
-c.scrollTop=c.scrollHeight;
+var v=document.getElementById('q').value; if(!v) return;
+var c=document.getElementById('chat'); c.innerHTML+='<div style="text-align:right;margin:8px 0"><span style="background:#143080;padding:8px;border-radius:8px;display:inline-block">'+v+'</span></div>';
+document.getElementById('q').value=''; c.innerHTML+='<div style="margin:8px 0"><span style="background:#1a2a4d;padding:8px;border-radius:8px;display:inline-block">شرح: '+v+' - دي ثغرة خطيرة وحلها فلترة المدخلات!</span></div>'; c.scrollTop=c.scrollHeight;
 }
-async function getIp(){
-try{
-let r=await fetch('https://api.ipify.org?format=json');
-let j=await r.json();
-document.getElementById('ip').innerText=j.ip;
-}catch{document.getElementById('ip').innerText='شغل النت';}
+async function getIp(){try{let r=await fetch('https://api.ipify.org?format=json');let j=await r.json();document.getElementById('ip').innerText=j.ip;}catch{document.getElementById('ip').innerText='شغل النت';}}
+function checkPass(){
+let p=document.getElementById('pass').value; let r=document.getElementById('passRes'); let s=0;
+if(p.length>=8) s++; if(/[A-Z]/.test(p)) s++; if(/[0-9]/.test(p)) s++; if(/[^A-Za-z0-9]/.test(p)) s++;
+if(p.length==0) r.innerHTML='اكتب باسورد'; else if(s<=1) r.innerHTML='🔴 ضعيف جدا - هيتخمن في ثانية'; else if(s==2) r.innerHTML='🟠 متوسط'; else if(s==3) r.innerHTML='🟢 قوي'; else r.innerHTML='🟢🟢 قوي جدا - ممتاز!';
+}
+function testXss(){
+let v=document.getElementById('xss').value; document.getElementById('xssRes').innerHTML='نتيجة خطيرة (innerHTML):<br><div style="border:1px solid red;padding:5px">'+v+'</div><br>لو ده تعليق في موقع، الكود كان هيشتغل ويسرق الحسابات!';
+}
+function testXssSafe(){
+let v=document.getElementById('xss').value; let d=document.getElementById('xssRes'); d.innerText='نتيجة محمية (textContent):\n'; let safe=document.createElement('div'); safe.textContent=v; safe.style.border='1px solid green'; safe.style.padding='5px'; d.appendChild(safe);
+}
+function checkUrl(){
+let u=document.getElementById('url').value; let r=document.getElementById('urlRes'); let danger=[];
+if(u.includes('@')) danger.push('فيه @ وده علامة تصيد'); if(u.startsWith('http://')) danger.push('http مش https - مش آمن'); if((u.match(/\./g)||[]).length>3) danger.push('نقط كتير - ممكن مزيف'); if(/0|1/.test(u) && u.toLowerCase().includes('faceb')) danger.push('ارقام بدل حروف faceb00k');
+if(u=='') r.innerHTML='حط رابط'; else if(danger.length==0) r.innerHTML='✅ الرابط شكله سليم (لكن افحص دايما)'; else r.innerHTML='🚨 رابط مشبوه:<br>- '+danger.join('<br>- ');
 }
 window.onload=function(){runCode();getIp();}
 </script>
