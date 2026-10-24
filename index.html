@@ -6,97 +6,120 @@
 <title>ALMOZAG ACADEMY</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
-body{background:#070b18;color:white;width:100%}
+body{background:#070b18;color:white}
 header{background:#0f1b36;padding:15px;text-align:center}
 .tabs{display:flex;gap:6px;padding:10px;background:#0b142a}
-.tab{flex:1;padding:12px;text-align:center;background:#1a2a4d;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer}
+.tab{flex:1;padding:13px;text-align:center;background:#1a2a4d;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer}
 .tab.active{background:#3b82f6}
 .box{width:96%;margin:10px auto;background:#122042;border-radius:14px;padding:14px;border:1px solid #2a3d6e}
-textarea{width:100%;height:40vh;background:#050a14;color:#9ec1ff;border-radius:10px;padding:10px;direction:ltr}
-iframe{width:100%;height:35vh;background:white;border-radius:10px;border:none}
 .btn{width:100%;padding:13px;background:#3b82f6;color:white;border:none;border-radius:10px;font-weight:900;margin-top:8px}
-.lab{background:#050a14;border-radius:10px;padding:12px;margin-top:10px;border:1px dashed #2a3d6e}
-input{width:100%;padding:10px;border-radius:8px;background:#070b18;color:white;border:1px solid #2a3d6e;margin-top:6px}
-.result{margin-top:8px;padding:8px;border-radius:8px;background:#0b142a;font-size:13px}
+.level{background:#050a14;border-radius:10px;padding:12px;margin:10px 0;border-right:4px solid #3b82f6}
+.level h3{color:#60a5fa;margin-bottom:6px}
+.level p{font-size:13px;line-height:1.9;color:#cbd5e1}
+.tag{display:inline-block;padding:3px 8px;border-radius:6px;font-size:11px;margin:2px}
+.white{background:#1e293b} .green{background:#14532d} .red{background:#7f1d1d} .blue{background:#1e3a8a}
+textarea{width:100%;height:35vh;background:#050a14;color:#9ec1ff;border-radius:10px;padding:10px;direction:ltr}
+iframe{width:100%;height:30vh;background:white;border-radius:10px;border:none}
 </style>
 </head>
 <body>
-<header><h2 style="color:#5a8bff">👑 ALMOZAG - اكاديمية الهاكر الاخلاقي</h2><p style="font-size:11px;color:#8aa0c5">تعليم حماية حقيقي - مش شكل</p></header>
+<header><h2 style="color:#5a8bff">👑 ALMOZAG - اكاديمية الهاكر الاخلاقي</h2><p style="font-size:11px;color:#8aa0c5">من الصفر للاحتراف - تعليم قانوني</p></header>
 
 <div class="tabs">
-<div class="tab active" onclick="show('editor',this)">💻 كود</div>
+<div class="tab" onclick="show('editor',this)">💻 كود</div>
 <div class="tab" onclick="show('ai',this)">🤖 AI</div>
-<div class="tab" onclick="show('hack',this)">🛡️ تعليم هاكر</div>
+<div class="tab active" onclick="show('hack',this)">🛡️ اكاديمية الهاكر</div>
 </div>
 
-<div id="editor">
-<div class="box">
-<textarea id="code"></textarea>
-<button class="btn" onclick="runCode()">▶ تشغيل</button>
-</div>
+<div id="editor" style="display:none">
+<div class="box"><textarea id="code"></textarea><button class="btn" onclick="runCode()">▶ تشغيل</button></div>
 <div class="box"><iframe id="result"></iframe></div>
 </div>
 
 <div id="ai" style="display:none">
-<div class="box">
-<div id="chat" style="height:40vh;overflow:auto;background:#050a14;padding:10px;border-radius:10px"><div style="padding:10px;background:#1a2a4d;border-radius:10px">انا ALMOZAG AI - اسألني عن اي ثغرة</div></div>
-<input id="q" placeholder="اشرحلي ثغرة XSS..."><button class="btn" onclick="send()">ارسال</button>
-</div>
+<div class="box"><div id="chat" style="height:40vh;overflow:auto;background:#050a14;padding:10px;border-radius:10px"><div style="padding:10px;background:#1a2a4d;border-radius:10px">اسألني عن اي نوع هاكر</div></div><input id="q" placeholder="يعني ايه White Hat..." style="width:100%;padding:10px;border-radius:8px;background:#050a14;color:white;border:1px solid #2a3d6e;margin-top:8px"><button class="btn" onclick="send()">ارسال</button></div>
 </div>
 
-<div id="hack" style="display:none">
-<!-- LAB 1 -->
+<div id="hack">
 <div class="box">
-<h3 style="color:#4f8cff">1- عنوانك الحقيقي IP + درس الشبكات</h3>
-<p style="font-size:12px;color:#8aa0c5">الـ IP هو عنوان جهازك. شوف بتاعك:</p>
-<h2 id="ip" style="color:#4f8cff;text-align:center;margin:8px 0">...</h2>
-<button class="btn" onclick="getIp()">تحديث الـ IP</button>
-<div class="lab">📚 <b>معلومة:</b> لو IP بتاعك 192.168.x.x ده Private جوه الراوتر. لو غير كده ده Public. الهاكر الاخلاقي لازم يعرف يفرق.</div>
+<h2 style="text-align:center;color:#facc15">🛡️ خارطة طريق الهاكر الاخلاقي</h2>
+<p style="text-align:center;font-size:12px;color:#8aa0c5">6 مستويات لازم تخلصهم بالترتيب</p>
+
+<div class="level">
+<h3>المستوى 1: أنواع الهاكرز (لازم تعرفهم)</h3>
+<p>
+<span class="tag white">🤍 White Hat</span> الهاكر الطيب - بيحمي الشركات بفلوس وبتصريح. ده اللي انت هتبقاه.<br>
+<span class="tag red">🖤 Black Hat</span> الهاكر المجرم - بيسرق وبيبتز - مكانه السجن.<br>
+<span class="tag blue">🩶 Gray Hat</span> بين البينين - يلاقي ثغرة ويبلغ عنها بس من غير اذن.<br>
+<span class="tag green">🔴 Red Team</span> فريق هجومي تابع للشركة بيجرب يخترقها عشان يختبر حمايتها.<br>
+<span class="tag green">🔵 Blue Team</span> فريق دفاعي بيصد الهجوم.
+</p>
 </div>
 
-<!-- LAB 2 -->
-<div class="box">
-<h3 style="color:#22c55e">2- معمل فحص قوة الباسورد (شغال بجد)</h3>
-<input id="pass" placeholder="اكتب باسورد هنا مثلا: pop123" oninput="checkPass()">
-<div id="passRes" class="result">اكتب باسورد عشان افحصه</div>
-<div class="lab">🔐 <b>الدرس:</b> باسورد قوي لازم يكون +8 حروف + رقم + حرف كابيتال + رمز @#$</div>
+<div class="level" style="border-right-color:#22c55e">
+<h3>المستوى 2: أنواع الهجمات</h3>
+<p>
+<b>1. Phishing:</b> يبعتلك لينك شبه فيسبوك بالظبط عشان تديه الباسورد.<br>
+<b>2. DDoS:</b> يبعت مليون طلب للموقع لحد ما يقع.<br>
+<b>3. Man in the Middle:</b> يقعد في النص بينك وبين الراوتر ويسرق كلامك.<br>
+<b>4. Brute Force:</b> يجرب كل الباسوردات لحد ما يلاقي الصح.<br>
+<b>5. Social Engineering:</b> يضحك عليك بالكلام مش بالكود. اخطر نوع!
+</p>
 </div>
 
-<!-- LAB 3 -->
-<div class="box">
-<h3 style="color:#f87171">3- معمل XSS - جرب بنفسك (آمن 100%)</h3>
-<p style="font-size:12px">اكتب كود في الخانة وشوف الفرق:</p>
-<input id="xss" placeholder="جرب اكتب: <script>alert(1)</script>">
-<button class="btn" style="background:#1e293b" onclick="testXss()">جرب بطريقة خطيرة (innerHTML)</button>
-<button class="btn" style="background:#15803d" onclick="testXssSafe()">جرب بطريقة محمية (textContent)</button>
-<div id="xssRes" class="result"></div>
-<div class="lab">💡 <b>الدرس:</b> المواقع المحمية بتستخدم textContent مش innerHTML عشان متتنفذش الاكواد الخبيثة.</div>
+<div class="level" style="border-right-color:#ef4444">
+<h3>المستوى 3: أشهر الثغرات OWASP Top 10</h3>
+<p>
+<b>XSS:</b> يحط كود جافاسكريبت في تعليق. الحل: textContent<br>
+<b>SQL Injection:</b> يكتب ' OR '1'='1 في تسجيل الدخول. الحل: Prepared Statements<br>
+<b>CSRF:</b> يخليك تدوس على زرار وانت مش عارف.<br>
+<b>IDOR:</b> يغير رقم الـ ID في الرابط ويشوف حساب حد تاني. مثال: /profile?id=1001 يخليها 1002
+</p>
 </div>
 
-<!-- LAB 4 -->
-<div class="box">
-<h3 style="color:#facc15">4- كاشف الروابط المزيفة Phishing</h3>
-<input id="url" placeholder="حط رابط هنا مثلا: http://faceb00k.com-login@hacker.ru">
-<button class="btn" style="background:#854d0e" onclick="checkUrl()">افحص الرابط</button>
-<div id="urlRes" class="result"></div>
-<div class="lab">🎣 <b>علامات التصيد:</b> فيه @ - فيه ارقام بدل حروف - http مش https - رابط طويل جدا</div>
+<div class="level" style="border-right-color:#facc15">
+<h3>المستوى 4: الشبكات والـ IP</h3>
+<p>
+<b>IP:</b> عنوان جهازك. Public للعالم، Private جوه البيت.<br>
+<b>Port:</b> باب في الجهاز. Port 80 للمواقع، 22 للتحكم.<br>
+<b>DNS:</b> بيحول google.com لرقم IP.<br>
+<b>VPN:</b> بيخفي الـ IP بتاعك ويشفر النت.<br>
+<b>Firewall:</b> حارس بيقفل المنافذ المفتوحة.
+<br><br>
+<span id="ip" style="color:#4f8cff;font-weight:900">IP بتاعك: ...</span>
+<button class="btn" style="background:#1e293b" onclick="getIp()">اعرف IP بتاعي للتعليم</button>
+</p>
 </div>
 
-<!-- LAB 5 -->
-<div class="box">
-<h3 style="color:#60a5fa">5- ادوات الهاكر الاخلاقي الحقيقية تتعلمها</h3>
-<div class="result" style="line-height:2">
-<b>Nmap:</b> nmap -sV 127.0.0.1 (فحص منافذ جهازك انت)<br>
-<b>SQLMap:</b> للكشف عن ثغرات SQL في موقعك انت<br>
-<b>Burp Suite:</b> برنامج يفحص الطلبات بينك وبين موقعك<br>
-<b>Wireshark:</b> بيشوف الترافيك اللي طالع من جهازك<br><br>
-<span style="color:#f87171">⚠️ كلها تستخدم بتصريح فقط على مواقعك. استخدامها على الغير جريمة.</span>
+<div class="level" style="border-right-color:#a855f7">
+<h3>المستوى 5: أدوات الهاكر الاخلاقي (تستخدم على جهازك فقط)</h3>
+<p>
+<b>Kali Linux:</b> نظام تشغيل فيه كل ادوات الحماية.<br>
+<b>Nmap:</b> nmap 127.0.0.1 يفحص منافذ جهازك.<br>
+<b>Wireshark:</b> بيشوف ايه اللي طالع من جهازك.<br>
+<b>Burp Suite:</b> بيعدل على طلبات موقعك انت عشان تختبره.<br>
+<b>Metasploit:</b> معمل اختبار اختراق قانوني.
+</p>
 </div>
+
+<div class="level" style="border-right-color:#06b6d4">
+<h3>المستوى 6: ازاي تبقى هاكر اخلاقي محترف وتكسب؟</h3>
+<p>
+1. اتعلم HTML + JS + Python<br>
+2. خد شهادة CEH او eJPT<br>
+3. سجل في مواقع Bug Bounty زي HackerOne - بيدوك فلوس لما تلاقي ثغرة في شركات كبيرة بتصريح!<br>
+4. عمرك ما تجرب على موقع من غير اذن كتابي. ده الفرق بين White و Black.<br><br>
+<b style="color:#22c55e">✅ خلصت الاكاديمية؟ دوس هنا:</b>
+<button class="btn" style="background:#15803d" onclick="alert('مبروك يا بوب! انت دلوقتي White Hat مبتدئ! كمل على HackerOne')">انا خلصت - اديني شهادة</button>
+</p>
+</div>
+
+<div style="background:#450a0a;border:1px solid red;padding:10px;border-radius:10px;text-align:center;font-size:11px">⚠️ تنبيه قانوني: كل الشرح هنا للدفاع والحماية فقط. اي استخدام هجومي على الغير بدون اذن جريمة يعاقب عليها القانون.</div>
 </div>
 </div>
 
 <script>
-var defaultCode = '<h1 style="text-align:center;color:blue">POP ALMOZAG Platform Working!</h1>\n<button onclick="alert(\'System OK\')" style="display:block;margin:20px auto;padding:15px;background:blue;color:white;border-radius:10px">Test</button>';
+var defaultCode = '<h1 style="text-align:center;color:blue">POP Platform</h1>';
 document.getElementById('code').value = defaultCode;
 function show(id,el){
 document.getElementById('editor').style.display='none';document.getElementById('ai').style.display='none';document.getElementById('hack').style.display='none';
@@ -107,26 +130,10 @@ if(id=='editor') runCode(); if(id=='hack') getIp();
 function runCode(){document.getElementById('result').srcdoc=document.getElementById('code').value;}
 function send(){
 var v=document.getElementById('q').value; if(!v) return;
-var c=document.getElementById('chat'); c.innerHTML+='<div style="text-align:right;margin:8px 0"><span style="background:#143080;padding:8px;border-radius:8px;display:inline-block">'+v+'</span></div>';
-document.getElementById('q').value=''; c.innerHTML+='<div style="margin:8px 0"><span style="background:#1a2a4d;padding:8px;border-radius:8px;display:inline-block">شرح: '+v+' - دي ثغرة خطيرة وحلها فلترة المدخلات!</span></div>'; c.scrollTop=c.scrollHeight;
+var c=document.getElementById('chat'); c.innerHTML+='<div style="text-align:right;margin:6px 0"><span style="background:#143080;padding:8px;border-radius:8px;display:inline-block">'+v+'</span></div>';
+document.getElementById('q').value=''; c.innerHTML+='<div style="margin:6px 0"><span style="background:#1a2a4d;padding:8px;border-radius:8px;display:inline-block">الشرح: '+v+' ده نوع من انواع الهاكر اللي شرحناه فوق!</span></div>'; c.scrollTop=c.scrollHeight;
 }
-async function getIp(){try{let r=await fetch('https://api.ipify.org?format=json');let j=await r.json();document.getElementById('ip').innerText=j.ip;}catch{document.getElementById('ip').innerText='شغل النت';}}
-function checkPass(){
-let p=document.getElementById('pass').value; let r=document.getElementById('passRes'); let s=0;
-if(p.length>=8) s++; if(/[A-Z]/.test(p)) s++; if(/[0-9]/.test(p)) s++; if(/[^A-Za-z0-9]/.test(p)) s++;
-if(p.length==0) r.innerHTML='اكتب باسورد'; else if(s<=1) r.innerHTML='🔴 ضعيف جدا - هيتخمن في ثانية'; else if(s==2) r.innerHTML='🟠 متوسط'; else if(s==3) r.innerHTML='🟢 قوي'; else r.innerHTML='🟢🟢 قوي جدا - ممتاز!';
-}
-function testXss(){
-let v=document.getElementById('xss').value; document.getElementById('xssRes').innerHTML='نتيجة خطيرة (innerHTML):<br><div style="border:1px solid red;padding:5px">'+v+'</div><br>لو ده تعليق في موقع، الكود كان هيشتغل ويسرق الحسابات!';
-}
-function testXssSafe(){
-let v=document.getElementById('xss').value; let d=document.getElementById('xssRes'); d.innerText='نتيجة محمية (textContent):\n'; let safe=document.createElement('div'); safe.textContent=v; safe.style.border='1px solid green'; safe.style.padding='5px'; d.appendChild(safe);
-}
-function checkUrl(){
-let u=document.getElementById('url').value; let r=document.getElementById('urlRes'); let danger=[];
-if(u.includes('@')) danger.push('فيه @ وده علامة تصيد'); if(u.startsWith('http://')) danger.push('http مش https - مش آمن'); if((u.match(/\./g)||[]).length>3) danger.push('نقط كتير - ممكن مزيف'); if(/0|1/.test(u) && u.toLowerCase().includes('faceb')) danger.push('ارقام بدل حروف faceb00k');
-if(u=='') r.innerHTML='حط رابط'; else if(danger.length==0) r.innerHTML='✅ الرابط شكله سليم (لكن افحص دايما)'; else r.innerHTML='🚨 رابط مشبوه:<br>- '+danger.join('<br>- ');
-}
+async function getIp(){try{let r=await fetch('https://api.ipify.org?format=json');let j=await r.json();document.getElementById('ip').innerText='IP بتاعك للتعليم: '+j.ip;}catch{}}
 window.onload=function(){runCode();getIp();}
 </script>
 </body>
