@@ -2,95 +2,101 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>ALMOZAG</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@800&display=swap');
-*{box-sizing:border-box;font-family:'Cairo',sans-serif}
-body{margin:0;background:#070b16;color:#e8eeff}
-header{padding:14px;text-align:center;background:#0e1931}
-.tabs{display:flex;gap:6px;justify-content:center;padding:10px;flex-wrap:wrap}
-.tab{padding:8px 16px;border-radius:20px;background:#16244a;border:1px solid #2a3d6e;cursor:pointer;font-size:13px}
-.tab.active{background:#3b82f6;color:white}
-.panel{background:#101c38;border:1px solid #2a3d6e;border-radius:14px;padding:12px;margin:10px}
-textarea{width:100%;height:300px;background:#060a14;color:#cbd5e1;border:1px solid #2a3d6e;border-radius:10px;padding:10px;direction:ltr;text-align:left;font-family:monospace}
-iframe{width:100%;height:300px;background:white;border-radius:10px;border:none}
-.btn{padding:10px 20px;border:none;border-radius:10px;font-weight:900;cursor:pointer}
-.run{background:#3b82f6;color:white}
+*{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
+body{background:#070b18;color:white;width:100vw;overflow-x:hidden}
+header{background:#0f1b36;padding:15px;text-align:center;width:100%}
+header h1{color:#4f8cff;font-size:5vw}
+header p{font-size:3.5vw;color:#8aa0c5}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px;background:#0b142a;width:100%}
+.tab{flex:1;min-width:45%;padding:12px;text-align:center;background:#1a2a4d;border-radius:12px;font-weight:900;font-size:14px}
+.tab.active{background:#3b82f6}
+.box{width:96%;margin:10px auto;background:#122042;border:1px solid #2a3d6e;border-radius:14px;padding:10px}
+textarea{width:100%;height:45vh;background:#050a14;color:#9ec1ff;border:1px solid #2a3d6e;border-radius:10px;padding:10px;font-family:monospace;font-size:14px;direction:ltr}
+iframe{width:100%;height:40vh;background:white;border-radius:10px;border:none}
+.btn{width:100%;padding:14px;background:#3b82f6;color:white;border:none;border-radius:12px;font-weight:900;font-size:16px;margin-top:10px}
+#chat{height:50vh;overflow:auto;background:#050a14;border-radius:10px;padding:10px}
+.msg{margin:8px 0;padding:10px;border-radius:10px;background:#1a2a4d}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid #2a3d6e;background:#050a14;color:white;margin-top:10px}
 </style>
 </head>
 <body>
+
 <header>
-<h2 style="margin:0;color:#5a8bff">ALMOZAG CRASH AL-MOZ3EG CODE</h2>
-<p style="margin:4px 0 0;font-size:11px;color:#8aa0c5">المنصة الرسمية - اكواد + ذكاء اصطناعي + هاكر اخلاقي</p>
+<h1>ALMOZAG CRASH CODE 👑</h1>
+<p>المنصة الرسمية - برمجة + ذكاء اصطناعي + هاكر اخلاقي</p>
 </header>
 
 <div class="tabs">
-<div class="tab active" id="t1" onclick="showTab('editor','t1')">محرر الاكواد</div>
-<div class="tab" id="t2" onclick="showTab('ai','t2')">ALMOZAG AI</div>
-<div class="tab" id="t3" onclick="showTab('hack','t3')">هاكر اخلاقي</div>
+<div class="tab active" onclick="openTab('editor',this)">💻 محرر الاكواد</div>
+<div class="tab" onclick="openTab('ai',this)">🤖 ALMOZAG AI</div>
+<div class="tab" onclick="openTab('hack',this)">🛡️ هاكر اخلاقي</div>
 </div>
 
 <div id="editor">
-<div class="panel">
-<textarea id="code"><h1 style="text-align:center;color:#3b82f6">Welcome POP!</h1>
-<p style="text-align:center">ALMOZAG Platform Working!</p>
-<button onclick="alert('ALMOZAG LEGEND')" style="display:block;margin:20px auto;padding:12px 25px;background:#3b82f6;color:white;border:none;border-radius:10px">Click Me</button>
+<div class="box">
+<textarea id="code"><h1 style="text-align:center;color:blue">Welcome POP ALMOZAG</h1>
+<p style="text-align:center">Platform is Working Now!</p>
+<button onclick="alert('Working 100%')" style="display:block;margin:20px auto;padding:15px;background:blue;color:white;border-radius:10px">Click Here</button>
 </textarea>
-<br><br>
-<button class="btn run" onclick="run()">▶ تشغيل</button>
+<button class="btn" onclick="runCode()">▶ تشغيل الكود - دوس هنا</button>
 </div>
-<div class="panel"><iframe id="out"></iframe></div>
+<div class="box"><iframe id="result"></iframe></div>
 </div>
 
 <div id="ai" style="display:none">
-<div class="panel">
-<div id="chat" style="height:300px;overflow-y:auto;background:#060a14;padding:10px;border-radius:10px">أهلا يا بوب! انا ALMOZAG AI جاهز!</div>
-<br>
-<input id="q" placeholder="اسألني..." style="width:70%;padding:10px;border-radius:10px;border:1px solid #2a3d6e;background:#060a14;color:white">
-<button class="btn run" onclick="ask()">ارسال</button>
+<div class="box">
+<div id="chat"><div class="msg">انا ALMOZAG AI جاهز! اكتب اي حاجة</div></div>
+<input id="q" placeholder="اعملي لعبة...">
+<button class="btn" onclick="send()">ارسال</button>
 </div>
 </div>
 
 <div id="hack" style="display:none">
-<div class="panel" style="text-align:center">
-<h3>عنوانك على النت IP</h3>
-<h2 id="ip">...جاري التحميل</h2>
-<button class="btn run" onclick="getIp()">تحديث</button>
+<div class="box" style="text-align:center">
+<h2>IP بتاعك</h2>
+<h1 id="ip" style="color:#4f8cff">...</h1>
+<button class="btn" onclick="getIp()">جيب الـ IP</button>
 <br><br>
-<p style="font-size:12px">XSS - SQL Injection - Nmap - Wireshark</p>
-<p style="font-size:11px;color:#ff6b6b">للتعليم فقط على موقعك انت - ممنوع تجرب على مواقع الغير</p>
+<p>XSS | SQL Injection | Nmap | IP</p>
+<p style="color:red;font-size:12px;margin-top:10px">للتعليم فقط - ممنوع تجرب على مواقع الغير</p>
 </div>
 </div>
 
 <script>
-function showTab(id,tid){
+function openTab(id,el){
 document.getElementById('editor').style.display='none';
 document.getElementById('ai').style.display='none';
 document.getElementById('hack').style.display='none';
 document.getElementById(id).style.display='block';
 document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-document.getElementById(tid).classList.add('active');
-if(id==='editor') run();
-if(id==='hack') getIp();
+el.classList.add('active');
+if(id=='editor') runCode();
+if(id=='hack') getIp();
 }
-function run(){document.getElementById('out').srcdoc=document.getElementById('code').value}
-function ask(){
-let v=document.getElementById('q').value;
+function runCode(){
+var c=document.getElementById('code').value;
+document.getElementById('result').srcdoc=c;
+}
+function send(){
+var v=document.getElementById('q').value;
 if(!v) return;
-let c=document.getElementById('chat');
-c.innerHTML+='<div style="text-align:right;margin:8px 0"><span style="background:#1e3a8a;padding:8px 12px;border-radius:12px;display:inline-block">'+v+'</span></div>';
+var chat=document.getElementById('chat');
+chat.innerHTML+='<div class=msg style="background:#143080;text-align:right">'+v+'</div>';
 document.getElementById('q').value='';
-setTimeout(()=>{c.innerHTML+='<div style="margin:8px 0"><span style="background:#1a2746;padding:8px 12px;border-radius:12px;display:inline-block">فكرة جامدة! خد الكود ده وحطه في المحرر:<br>&lt;h1&gt;'+v+'&lt;/h1&gt;</span></div>';c.scrollTop=c.scrollHeight},400);
+chat.innerHTML+='<div class=msg>خد الكود ده حطه في المحرر:<br>&lt;h1&gt;'+v+'&lt;/h1&gt;</div>';
+chat.scrollTop=chat.scrollHeight;
 }
 async function getIp(){
 try{
 let r=await fetch('https://api.ipify.org?format=json');
-let d=await r.json();
-document.getElementById('ip').innerText=d.ip;
-}catch{document.getElementById('ip').innerText='افتح النت';}
+let j=await r.json();
+document.getElementById('ip').innerText=j.ip;
+}catch(e){document.getElementById('ip').innerText='شغل النت';}
 }
-window.onload=run;
+window.onload=function(){runCode(); getIp();}
 </script>
 </body>
 </html>
