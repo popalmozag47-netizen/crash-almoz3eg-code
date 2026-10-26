@@ -3,76 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POP ALMOZAG - Official</title>
+<title>POP ALMOZAG</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Cairo:wght@700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#fff;font-family:'Cairo',sans-serif;overflow-x:hidden}
-.bg{position:fixed;inset:0;background:radial-gradient(circle at 50% 15%, #0f2d5e 0%, #000 70%);z-index:-1}
-.header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
-.h{width:56px;height:56px;background:#111;border:1.5px solid #00aaff;border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px #00aaff88;font-size:24px;cursor:pointer;transition:.2s}
-.h:hover{transform:scale(1.1);box-shadow:0 0 25px #00aaff}
-.logo{text-align:center;margin-top:10px}
-.logo .crown{font-size:85px;filter:drop-shadow(0 0 25px #00aaff);display:block}
-.logo h1{font-family:'Orbitron';color:#00d9ff;text-shadow:0 0 20px #00aaff;letter-spacing:3px;font-size:30px;margin-top:5px}
-.logo p{color:#777;font-size:12px;margin-top:4px;letter-spacing:1px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px;max-width:520px;margin:20px auto 90px}
-.card{background:linear-gradient(145deg,#0d0d0d,#13244a);border:1.5px solid #00aaff55;border-radius:20px;padding:20px 10px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
-.card:hover{transform:translateY(-4px) scale(1.02);border-color:#00d9ff;box-shadow:0 0 30px #00aaffaa}
-.ic{font-size:38px;display:block}
-.tt{font-size:13px;font-weight:800;margin-top:8px;display:block}
-.blue{color:#00d9ff}.green{color:#00ff9d}.red{color:#ff2d55}.yellow{color:#ffcc00}.purple{color:#a855f7}
-
-/* MODAL */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:9999;padding:12px;backdrop-filter:blur(6px)}
-.modal.on{display:flex;justify-content:center;align-items:flex-start;padding-top:20px;overflow:auto}
-.box{width:100%;max-width:560px;background:#080f25;border:1.5px solid #00aaff;border-radius:22px;padding:22px;position:relative;box-shadow:0 0 50px #00aaff66;animation:pop .3s ease}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:'Cairo'}
+.bg{position:fixed;inset:0;background:#000;z-index:-1}
+.bg::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 10%, #0a2a5a 0%, #000 65%);opacity:.9}
+.bg::after{content:'';position:absolute;inset:0;background:url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIG9wYWNpdHk9Ii4wNSI+PHBhdGggZD0iTTAgMGgxMHYxMEgweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA5OWZmIi8+PC9nPjwvc3ZnPg==')}
+.title{text-align:center;padding:28px 0 10px}
+.title h1{font-family:'Orbitron';color:#7de2ff;text-shadow:0 0 20px #00aaff,0 0 40px #00aaff;font-size:38px;letter-spacing:2px}
+.line{width:80%;height:1px;background:linear-gradient(90deg,transparent,#00aaff,transparent);margin:14px auto 20px;box-shadow:0 0 10px #00aaff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:12px;max-width:600px;margin:0 auto}
+.card{background:linear-gradient(180deg,#0e0e14,#05070a);border:1.5px solid #00aaff33;border-radius:22px;padding:0;overflow:hidden;cursor:pointer;transition:.3s;aspect-ratio:1/1;position:relative;box-shadow:0 0 20px #00aaff22 inset}
+.card:hover{transform:translateY(-6px) scale(1.04);border-color:#00d9ff;box-shadow:0 0 40px #00aaff88,0 0 20px #00aaff44 inset}
+.card img{width:100%;height:100%;object-fit:contain;padding:4px;display:block}
+.label{max-width:600px;margin:6px auto 0;padding:0 12px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.label span{font-size:10px;color:#5aa8ff;font-weight:700}
+.social{max-width:600px;margin:24px auto 80px;padding:0 12px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sbtn{background:#0a0a0a;border:1px solid #ffffff12;border-radius:14px;padding:12px 4px;text-align:center;cursor:pointer;font-size:11px;font-weight:800;transition:.2s}
+.sbtn:hover{border-color:#00d9ff;color:#00d9ff;box-shadow:0 0 15px #00aaff66}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;z-index:9999;padding:12px}
+.modal.on{display:flex;justify-content:center;align-items:flex-start;padding-top:18px;overflow:auto}
+.box{width:100%;max-width:580px;background:#080f25;border:1.5px solid #00aaff;border-radius:22px;padding:20px;position:relative;box-shadow:0 0 50px #00aaff66;animation:pop .25s}
 @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
-.box h2{color:#00d9ff;font-family:'Orbitron';text-align:center;margin-bottom:16px;font-size:18px}
+.box h2{color:#00d9ff;font-family:'Orbitron';text-align:center;margin-bottom:14px}
 .cl{position:absolute;top:10px;left:10px;background:#ff2d55;border:none;width:34px;height:34px;border-radius:50%;color:#fff;font-weight:900;cursor:pointer}
+.dev-card{background:#000;border:1px solid #00aaff44;border-radius:14px;padding:14px;margin:10px 0;display:flex;justify-content:space-between;align-items:center}
+.dev-card a{color:#00d9ff;text-decoration:none;font-weight:800;background:#00aaff22;padding:7px 14px;border-radius:8px;font-size:12px}
 iframe{width:100%;height:70vh;border:none;border-radius:14px;background:#000}
-.dev-card{background:#000;border:1px solid #00aaff44;border-radius:14px;padding:14px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;transition:.2s}
-.dev-card:hover{border-color:#00d9ff;background:#00111f}
-.dev-card span{font-weight:700;font-size:14px}
-.dev-card a{color:#00d9ff;text-decoration:none;font-weight:800;background:#00aaff22;padding:7px 16px;border-radius:9px;border:1px solid #00aaff44;font-size:13px}
-.res{margin-top:12px;padding:12px;background:#000;border-radius:11px;border:1px solid #00aaff33;white-space:pre-wrap;line-height:1.8;font-size:13px;color:#ccc}
-.footer{text-align:center;padding:20px;color:#444;font-size:11px}
+.footer{text-align:center;color:#333;font-size:10px;padding:20px;letter-spacing:1px}
 </style>
 </head>
 <body>
 <div class="bg"></div>
-
-<div class="header">
-<div class="h" onclick="openTool('dev')">👤</div>
-<div class="h" onclick="openTool('ai')">🤖</div>
-</div>
-
-<div class="logo">
-<span class="crown">👑🥷</span>
-<h1>POP ALMOZAG</h1>
-<p>Ethical Hacker & Developer - Gharbia, Egypt</p>
-</div>
+<div class="title"><h1>POP ALMOZAG</h1><div class="line"></div></div>
 
 <div class="grid">
-<div class="card" onclick="openTool('ai')"><span class="ic blue">🤖</span><span class="tt blue">المساعد الذكي</span></div>
-<div class="card" onclick="openTool('dev')"><span class="ic green">👑</span><span class="tt green">صفحة المطور</span></div>
-<div class="card" onclick="openTool('link')"><span class="ic blue">🔗</span><span class="tt blue">فحص الروابط</span></div>
-<div class="card" onclick="openTool('pass')"><span class="ic red">🛡️</span><span class="tt red">فحص الباسورد</span></div>
-<div class="card" onclick="openTool('yt')"><span class="ic red">▶️</span><span class="tt red">قناتي يوتيوب</span></div>
-<div class="card" onclick="openTool('social')"><span class="ic purple">🌐</span><span class="tt purple">كل حساباتي</span></div>
+<div class="card" onclick="openTool('fb')"><img src="icon1.png"></div>
+<div class="card" onclick="openTool('user')"><img src="icon2.png"></div>
+<div class="card" onclick="openTool('insta')"><img src="icon3.png"></div>
+<div class="card" onclick="openTool('img1')"><img src="icon4.png"></div>
+<div class="card" onclick="openTool('video')"><img src="icon5.png"></div>
+<div class="card" onclick="openTool('share')"><img src="icon6.png"></div>
+<div class="card" onclick="openTool('shield')"><img src="icon7.png"></div>
+<div class="card" onclick="openTool('hide')"><img src="icon8.png"></div>
+<div class="card" onclick="openTool('reply')"><img src="icon9.png"></div>
+</div>
+
+<div class="label">
+<span>فحص فيسبوك</span><span>اضافة متابع</span><span>قفل انستا</span>
+<span>تكبير صورة</span><span>تحويل فيديو</span><span>مشاركة شات</span>
+<span>الحماية</span><span>اخفاء seen</span><span>رد تلقائي</span>
+</div>
+
+<div class="social">
+<div class="sbtn" onclick="window.open('https://www.facebook.com/share/14stsnZEqGn/','_blank')">فيسبوك</div>
+<div class="sbtn" onclick="window.open('https://wa.me/201552780911','_blank')">واتس 1</div>
+<div class="sbtn" onclick="window.open('https://wa.me/201202095820','_blank')">واتس 2</div>
+<div class="sbtn" onclick="window.open('https://www.tiktok.com/@almozag11alsks7','_blank')">تيك توك</div>
+<div class="sbtn" onclick="window.open('https://t.me/Pop_almozag','_blank')">تيلي 1</div>
+<div class="sbtn" onclick="window.open('https://t.me/PopAlmozag','_blank')">تيلي 2</div>
+<div class="sbtn" onclick="window.open('https://www.youtube.com/@pop_Almozag','_blank')">يوتيوب</div>
+<div class="sbtn" onclick="openTool('dev')">المطور 👑</div>
 </div>
 
 <div id="mod"></div>
-<div class="footer">© 2026 POP ALMOZAG - All Rights Reserved<br>Educational Purpose Only</div>
+<div class="footer">© 2026 POP ALMOZAG - Official - Educational Only<br>FB/WhatsApp/TikTok/Telegram/YouTube Integrated</div>
 
 <script>
 const devHTML = `
-<div style="text-align:center;margin:12px 0">
-<div style="font-size:70px">🥷</div>
-<div style="color:#00d9ff;font-family:'Orbitron';font-size:22px">POP ALMOZAG</div>
-<div style="color:#aaa;font-size:13px;margin-top:4px">Ethical Hacker & Developer</div>
-<div style="color:#555;font-size:11px">Zifta - Gharbia - Egypt</div>
-</div>
+<div style="text-align:center;margin-bottom:8px"><img src="icon2.png" style="width:90px;border-radius:18px"><div style="color:#00d9ff;font-family:'Orbitron';margin-top:8px">POP ALMOZAG</div><div style="color:#666;font-size:11px">Zifta - Gharbia - Egypt | Ethical Hacker</div></div>
 <div class="dev-card"><span>📘 فيسبوك</span><a href="https://www.facebook.com/share/14stsnZEqGn/" target="_blank">افتح</a></div>
 <div class="dev-card"><span>💬 واتساب 1</span><a href="https://wa.me/201552780911" target="_blank">01552780911</a></div>
 <div class="dev-card"><span>💬 واتساب 2</span><a href="https://wa.me/201202095820" target="_blank">01202095820</a></div>
@@ -85,17 +85,19 @@ const devHTML = `
 `;
 
 const T={
-ai:`<h2>🤖 ALMOZAG AI - المساعد الخاص</h2><iframe src="https://zzzaaa1234alfk-ux.github.io/ALMOZAG-chat/"></iframe><div class="res">💡 ده الشات الذكي بتاعك متكامل جوه الموقع</div>`,
-dev:`<h2>👑 صفحة المطور</h2>${devHTML}`,
-social:`<h2>🌐 كل حساباتي</h2>${devHTML}<div class="res">📩 تواصل معايا على أي منصة\n🔥 برد خلال 24 ساعة</div>`,
-yt:`<h2>▶️ قناة اليوتيوب</h2><div class="dev-card"><span>▶️ يوتيوب</span><a href="https://www.youtube.com/@pop_Almozag" target="_blank">اشترك الآن</a></div><iframe src="https://www.youtube.com/embed?listType=user&list=pop_Almozag" style="height:50vh;margin-top:12px"></iframe><div class="res">🔔 اشترك وفعل الجرس عشان يوصلك كل جديد\n👑 محتوى هاكينج أخلاقي وتعليمي</div>`,
-link:`<h2>🔗 فحص الروابط المشبوهة</h2><div class="res">✅ الميزة دي متكاملة في المساعد الذكي فوق\nادخل على المساعد الذكي وحط الرابط وهيقولك آمن ولا لا\n🔍 بنفحص: الروابط المختصرة - مواقع التصيد - الروابط المجانية</div><div style="text-align:center;margin-top:12px"><button onclick="openTool('ai')" style="padding:12px 24px;background:#00aaff;border:none;border-radius:10px;color:#fff;font-weight:800;cursor:pointer">افتح المساعد الذكي 🤖</button></div>`,
-pass:`<h2>🛡️ فحص قوة الباسورد</h2><div class="res">✅ الميزة دي متكاملة في المساعد الذكي\nادخل على المساعد وحط الباسورد وهيقيم قوته\n\n💪 باسورد قوي = حروف كبيرة + صغيرة + أرقام + رموز + 12 حرف على الأقل</div><div style="text-align:center;margin-top:12px"><button onclick="openTool('ai')" style="padding:12px 24px;background:#00aaff;border:none;border-radius:10px;color:#fff;font-weight:800;cursor:pointer">افتح المساعد الذكي 🤖</button></div>`
+fb:`<h2>🔍 فحص روابط فيسبوك</h2><img src="icon1.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px;font-size:13px;line-height:1.8">🔗 افحص أي رابط فيسبوك مشبوه قبل ما تفتحه<br>🛡️ بنكشف التصيد والروابط الملغمة<br><br>الصق الرابط في المساعد الذكي 🤖</div><div style="text-align:center;margin-top:10px"><button onclick="openTool('ai')" style="background:#00aaff;border:none;padding:10px 20px;border-radius:10px;color:#fff;font-weight:800;cursor:pointer">افتح المساعد</button></div>`,
+user:`<h2>👤 اضافة متابعين</h2><img src="icon2.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px">زيادة متابعين بطرق شرعية - شروحات في قناة اليوتيوب</div>${devHTML}`,
+insta:`<h2>🔒 قفل انستا</h2><img src="icon3.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px">🔐 تأمين حساب انستا - قفل وحماية<br>تعليمي لحماية حسابك فقط</div>`,
+img1:`<h2>🖼️ تكبير الصورة</h2><img src="icon4.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px">تكبير صور البروفايل بجودة عالية بدون ما يعرف</div>`,
+video:`<h2>🎞️ تحويل الفيديو</h2><img src="icon5.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px">تحميل وتحويل فيديوهات تيك توك ويوتيوب</div>`,
+share:`<h2>💬 مشاركة الشات</h2><img src="icon6.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px">مشاركة رسائل واتساب وفيسبوك بسرعة</div>`,
+shield:`<h2>🛡️ الحماية</h2><img src="icon7.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px">✅ فحص الحماية - جهازك محمي<br>🛡️ فحص الفيروسات والاختراق</div>`,
+hide:`<h2>👁️ اخفاء المشاهدة</h2><img src="icon8.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px">👁️‍🗨️ اخفاء seen - تشوف الاستوري من غير ما يعرف<br>🔒 حماية خصوصيتك</div>`,
+reply:`<h2>🔄 رد تلقائي</h2><img src="icon9.png" style="width:150px;display:block;margin:0 auto 12px;border-radius:18px"><div style="background:#000;padding:12px;border-radius:10px">🤖 رد تلقائي واتساب وفيسبوك - بوت ذكي<br>⚡ متكامل في الشات بتاعك</div>`,
+ai:`<h2>🤖 المساعد الذكي ALMOZAG</h2><iframe src="https://zzzaaa1234alfk-ux.github.io/ALMOZAG-chat/" style="height:65vh"></iframe>`,
+dev:`<h2>👑 المطور POP ALMOZAG</h2>${devHTML}`
 };
-
-function openTool(id){
-document.getElementById('mod').innerHTML=`<div class="modal on" onclick="if(event.target==this)closeT()"><div class="box"><button class="cl" onclick="closeT()">X</button>${T[id]}</div></div>`;
-}
+function openTool(id){document.getElementById('mod').innerHTML=`<div class="modal on" onclick="if(event.target==this)closeT()"><div class="box"><button class="cl" onclick="closeT()">X</button>${T[id]}</div></div>`;}
 function closeT(){document.getElementById('mod').innerHTML='';}
 </script>
 </body>
