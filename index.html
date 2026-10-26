@@ -3,138 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALMOZAG ACADEMY</title>
+<title>POP ALMOZAG - Official</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Cairo:wght@700;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
-body{background:#070b18;color:white}
-header{background:#0f1b36;padding:15px;text-align:center}
-.tabs{display:flex;gap:6px;padding:10px;background:#0b142a}
-.tab{flex:1;padding:13px;text-align:center;background:#1a2a4d;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer}
-.tab.active{background:#3b82f6}
-.box{width:96%;margin:10px auto;background:#122042;border-radius:14px;padding:14px;border:1px solid #2a3d6e}
-.btn{width:100%;padding:13px;background:#3b82f6;color:white;border:none;border-radius:10px;font-weight:900;margin-top:8px}
-.level{background:#050a14;border-radius:10px;padding:12px;margin:10px 0;border-right:4px solid #3b82f6}
-.level h3{color:#60a5fa;margin-bottom:6px}
-.level p{font-size:13px;line-height:1.9;color:#cbd5e1}
-.tag{display:inline-block;padding:3px 8px;border-radius:6px;font-size:11px;margin:2px}
-.white{background:#1e293b} .green{background:#14532d} .red{background:#7f1d1d} .blue{background:#1e3a8a}
-textarea{width:100%;height:35vh;background:#050a14;color:#9ec1ff;border-radius:10px;padding:10px;direction:ltr}
-iframe{width:100%;height:30vh;background:white;border-radius:10px;border:none}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:'Cairo',sans-serif;overflow-x:hidden}
+.bg{position:fixed;inset:0;background:radial-gradient(circle at 50% 15%, #0f2d5e 0%, #000 70%);z-index:-1}
+.header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
+.h{width:56px;height:56px;background:#111;border:1.5px solid #00aaff;border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px #00aaff88;font-size:24px;cursor:pointer;transition:.2s}
+.h:hover{transform:scale(1.1);box-shadow:0 0 25px #00aaff}
+.logo{text-align:center;margin-top:10px}
+.logo .crown{font-size:85px;filter:drop-shadow(0 0 25px #00aaff);display:block}
+.logo h1{font-family:'Orbitron';color:#00d9ff;text-shadow:0 0 20px #00aaff;letter-spacing:3px;font-size:30px;margin-top:5px}
+.logo p{color:#777;font-size:12px;margin-top:4px;letter-spacing:1px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px;max-width:520px;margin:20px auto 90px}
+.card{background:linear-gradient(145deg,#0d0d0d,#13244a);border:1.5px solid #00aaff55;border-radius:20px;padding:20px 10px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-4px) scale(1.02);border-color:#00d9ff;box-shadow:0 0 30px #00aaffaa}
+.ic{font-size:38px;display:block}
+.tt{font-size:13px;font-weight:800;margin-top:8px;display:block}
+.blue{color:#00d9ff}.green{color:#00ff9d}.red{color:#ff2d55}.yellow{color:#ffcc00}.purple{color:#a855f7}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:9999;padding:12px;backdrop-filter:blur(6px)}
+.modal.on{display:flex;justify-content:center;align-items:flex-start;padding-top:20px;overflow:auto}
+.box{width:100%;max-width:560px;background:#080f25;border:1.5px solid #00aaff;border-radius:22px;padding:22px;position:relative;box-shadow:0 0 50px #00aaff66;animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.box h2{color:#00d9ff;font-family:'Orbitron';text-align:center;margin-bottom:16px;font-size:18px}
+.cl{position:absolute;top:10px;left:10px;background:#ff2d55;border:none;width:34px;height:34px;border-radius:50%;color:#fff;font-weight:900;cursor:pointer}
+iframe{width:100%;height:70vh;border:none;border-radius:14px;background:#000}
+.dev-card{background:#000;border:1px solid #00aaff44;border-radius:14px;padding:14px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;transition:.2s}
+.dev-card:hover{border-color:#00d9ff;background:#00111f}
+.dev-card span{font-weight:700;font-size:14px}
+.dev-card a{color:#00d9ff;text-decoration:none;font-weight:800;background:#00aaff22;padding:7px 16px;border-radius:9px;border:1px solid #00aaff44;font-size:13px}
+.res{margin-top:12px;padding:12px;background:#000;border-radius:11px;border:1px solid #00aaff33;white-space:pre-wrap;line-height:1.8;font-size:13px;color:#ccc}
+.footer{text-align:center;padding:20px;color:#444;font-size:11px}
 </style>
 </head>
 <body>
-<header><h2 style="color:#5a8bff">👑 ALMOZAG - اكاديمية الهاكر الاخلاقي</h2><p style="font-size:11px;color:#8aa0c5">من الصفر للاحتراف - تعليم قانوني</p></header>
+<div class="bg"></div>
 
-<div class="tabs">
-<div class="tab" onclick="show('editor',this)">💻 كود</div>
-<div class="tab" onclick="show('ai',this)">🤖 AI</div>
-<div class="tab active" onclick="show('hack',this)">🛡️ اكاديمية الهاكر</div>
+<div class="header">
+<div class="h" onclick="openTool('dev')">👤</div>
+<div class="h" onclick="openTool('ai')">🤖</div>
 </div>
 
-<div id="editor" style="display:none">
-<div class="box"><textarea id="code"></textarea><button class="btn" onclick="runCode()">▶ تشغيل</button></div>
-<div class="box"><iframe id="result"></iframe></div>
+<div class="logo">
+<span class="crown">👑🥷</span>
+<h1>POP ALMOZAG</h1>
+<p>Ethical Hacker & Developer - Gharbia, Egypt</p>
 </div>
 
-<div id="ai" style="display:none">
-<div class="box"><div id="chat" style="height:40vh;overflow:auto;background:#050a14;padding:10px;border-radius:10px"><div style="padding:10px;background:#1a2a4d;border-radius:10px">اسألني عن اي نوع هاكر</div></div><input id="q" placeholder="يعني ايه White Hat..." style="width:100%;padding:10px;border-radius:8px;background:#050a14;color:white;border:1px solid #2a3d6e;margin-top:8px"><button class="btn" onclick="send()">ارسال</button></div>
+<div class="grid">
+<div class="card" onclick="openTool('ai')"><span class="ic blue">🤖</span><span class="tt blue">المساعد الذكي</span></div>
+<div class="card" onclick="openTool('dev')"><span class="ic green">👑</span><span class="tt green">صفحة المطور</span></div>
+<div class="card" onclick="openTool('link')"><span class="ic blue">🔗</span><span class="tt blue">فحص الروابط</span></div>
+<div class="card" onclick="openTool('pass')"><span class="ic red">🛡️</span><span class="tt red">فحص الباسورد</span></div>
+<div class="card" onclick="openTool('yt')"><span class="ic red">▶️</span><span class="tt red">قناتي يوتيوب</span></div>
+<div class="card" onclick="openTool('social')"><span class="ic purple">🌐</span><span class="tt purple">كل حساباتي</span></div>
 </div>
 
-<div id="hack">
-<div class="box">
-<h2 style="text-align:center;color:#facc15">🛡️ خارطة طريق الهاكر الاخلاقي</h2>
-<p style="text-align:center;font-size:12px;color:#8aa0c5">6 مستويات لازم تخلصهم بالترتيب</p>
-
-<div class="level">
-<h3>المستوى 1: أنواع الهاكرز (لازم تعرفهم)</h3>
-<p>
-<span class="tag white">🤍 White Hat</span> الهاكر الطيب - بيحمي الشركات بفلوس وبتصريح. ده اللي انت هتبقاه.<br>
-<span class="tag red">🖤 Black Hat</span> الهاكر المجرم - بيسرق وبيبتز - مكانه السجن.<br>
-<span class="tag blue">🩶 Gray Hat</span> بين البينين - يلاقي ثغرة ويبلغ عنها بس من غير اذن.<br>
-<span class="tag green">🔴 Red Team</span> فريق هجومي تابع للشركة بيجرب يخترقها عشان يختبر حمايتها.<br>
-<span class="tag green">🔵 Blue Team</span> فريق دفاعي بيصد الهجوم.
-</p>
-</div>
-
-<div class="level" style="border-right-color:#22c55e">
-<h3>المستوى 2: أنواع الهجمات</h3>
-<p>
-<b>1. Phishing:</b> يبعتلك لينك شبه فيسبوك بالظبط عشان تديه الباسورد.<br>
-<b>2. DDoS:</b> يبعت مليون طلب للموقع لحد ما يقع.<br>
-<b>3. Man in the Middle:</b> يقعد في النص بينك وبين الراوتر ويسرق كلامك.<br>
-<b>4. Brute Force:</b> يجرب كل الباسوردات لحد ما يلاقي الصح.<br>
-<b>5. Social Engineering:</b> يضحك عليك بالكلام مش بالكود. اخطر نوع!
-</p>
-</div>
-
-<div class="level" style="border-right-color:#ef4444">
-<h3>المستوى 3: أشهر الثغرات OWASP Top 10</h3>
-<p>
-<b>XSS:</b> يحط كود جافاسكريبت في تعليق. الحل: textContent<br>
-<b>SQL Injection:</b> يكتب ' OR '1'='1 في تسجيل الدخول. الحل: Prepared Statements<br>
-<b>CSRF:</b> يخليك تدوس على زرار وانت مش عارف.<br>
-<b>IDOR:</b> يغير رقم الـ ID في الرابط ويشوف حساب حد تاني. مثال: /profile?id=1001 يخليها 1002
-</p>
-</div>
-
-<div class="level" style="border-right-color:#facc15">
-<h3>المستوى 4: الشبكات والـ IP</h3>
-<p>
-<b>IP:</b> عنوان جهازك. Public للعالم، Private جوه البيت.<br>
-<b>Port:</b> باب في الجهاز. Port 80 للمواقع، 22 للتحكم.<br>
-<b>DNS:</b> بيحول google.com لرقم IP.<br>
-<b>VPN:</b> بيخفي الـ IP بتاعك ويشفر النت.<br>
-<b>Firewall:</b> حارس بيقفل المنافذ المفتوحة.
-<br><br>
-<span id="ip" style="color:#4f8cff;font-weight:900">IP بتاعك: ...</span>
-<button class="btn" style="background:#1e293b" onclick="getIp()">اعرف IP بتاعي للتعليم</button>
-</p>
-</div>
-
-<div class="level" style="border-right-color:#a855f7">
-<h3>المستوى 5: أدوات الهاكر الاخلاقي (تستخدم على جهازك فقط)</h3>
-<p>
-<b>Kali Linux:</b> نظام تشغيل فيه كل ادوات الحماية.<br>
-<b>Nmap:</b> nmap 127.0.0.1 يفحص منافذ جهازك.<br>
-<b>Wireshark:</b> بيشوف ايه اللي طالع من جهازك.<br>
-<b>Burp Suite:</b> بيعدل على طلبات موقعك انت عشان تختبره.<br>
-<b>Metasploit:</b> معمل اختبار اختراق قانوني.
-</p>
-</div>
-
-<div class="level" style="border-right-color:#06b6d4">
-<h3>المستوى 6: ازاي تبقى هاكر اخلاقي محترف وتكسب؟</h3>
-<p>
-1. اتعلم HTML + JS + Python<br>
-2. خد شهادة CEH او eJPT<br>
-3. سجل في مواقع Bug Bounty زي HackerOne - بيدوك فلوس لما تلاقي ثغرة في شركات كبيرة بتصريح!<br>
-4. عمرك ما تجرب على موقع من غير اذن كتابي. ده الفرق بين White و Black.<br><br>
-<b style="color:#22c55e">✅ خلصت الاكاديمية؟ دوس هنا:</b>
-<button class="btn" style="background:#15803d" onclick="alert('مبروك يا بوب! انت دلوقتي White Hat مبتدئ! كمل على HackerOne')">انا خلصت - اديني شهادة</button>
-</p>
-</div>
-
-<div style="background:#450a0a;border:1px solid red;padding:10px;border-radius:10px;text-align:center;font-size:11px">⚠️ تنبيه قانوني: كل الشرح هنا للدفاع والحماية فقط. اي استخدام هجومي على الغير بدون اذن جريمة يعاقب عليها القانون.</div>
-</div>
-</div>
+<div id="mod"></div>
+<div class="footer">© 2026 POP ALMOZAG - All Rights Reserved<br>Educational Purpose Only</div>
 
 <script>
-var defaultCode = '<h1 style="text-align:center;color:blue">POP Platform</h1>';
-document.getElementById('code').value = defaultCode;
-function show(id,el){
-document.getElementById('editor').style.display='none';document.getElementById('ai').style.display='none';document.getElementById('hack').style.display='none';
-document.getElementById(id).style.display='block';
-document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
-if(id=='editor') runCode(); if(id=='hack') getIp();
+const devHTML = `
+<div style="text-align:center;margin:12px 0">
+<div style="font-size:70px">🥷</div>
+<div style="color:#00d9ff;font-family:'Orbitron';font-size:22px">POP ALMOZAG</div>
+<div style="color:#aaa;font-size:13px;margin-top:4px">Ethical Hacker & Developer</div>
+<div style="color:#555;font-size:11px">Zifta - Gharbia - Egypt</div>
+</div>
+<div class="dev-card"><span>📘 فيسبوك</span><a href="https://www.facebook.com/share/14stsnZEqGn/" target="_blank">افتح</a></div>
+<div class="dev-card"><span>💬 واتساب 1</span><a href="https://wa.me/201552780911" target="_blank">01552780911</a></div>
+<div class="dev-card"><span>💬 واتساب 2</span><a href="https://wa.me/201202095820" target="_blank">01202095820</a></div>
+<div class="dev-card"><span>🎵 تيك توك</span><a href="https://www.tiktok.com/@almozag11alsks7" target="_blank">@almozag11alsks7</a></div>
+<div class="dev-card"><span>✈️ تيليجرام 1</span><a href="https://t.me/Pop_almozag" target="_blank">@Pop_almozag</a></div>
+<div class="dev-card"><span>✈️ تيليجرام 2</span><a href="https://t.me/PopAlmozag" target="_blank">@PopAlmozag</a></div>
+<div class="dev-card"><span>▶️ يوتيوب</span><a href="https://www.youtube.com/@pop_Almozag" target="_blank">@pop_Almozag</a></div>
+<div class="dev-card"><span>💻 جيت هاب</span><a href="https://github.com/popalmozag47-netizen" target="_blank">GitHub</a></div>
+<div class="dev-card"><span>🤖 شات ALMOZAG</span><a href="https://zzzaaa1234alfk-ux.github.io/ALMOZAG-chat/" target="_blank">افتح الشات</a></div>
+`;
+
+const T={
+ai:`<h2>🤖 ALMOZAG AI - المساعد الخاص</h2><iframe src="https://zzzaaa1234alfk-ux.github.io/ALMOZAG-chat/"></iframe><div class="res">💡 ده الشات الذكي بتاعك متكامل جوه الموقع</div>`,
+dev:`<h2>👑 صفحة المطور</h2>${devHTML}`,
+social:`<h2>🌐 كل حساباتي</h2>${devHTML}<div class="res">📩 تواصل معايا على أي منصة\n🔥 برد خلال 24 ساعة</div>`,
+yt:`<h2>▶️ قناة اليوتيوب</h2><div class="dev-card"><span>▶️ يوتيوب</span><a href="https://www.youtube.com/@pop_Almozag" target="_blank">اشترك الآن</a></div><iframe src="https://www.youtube.com/embed?listType=user&list=pop_Almozag" style="height:50vh;margin-top:12px"></iframe><div class="res">🔔 اشترك وفعل الجرس عشان يوصلك كل جديد\n👑 محتوى هاكينج أخلاقي وتعليمي</div>`,
+link:`<h2>🔗 فحص الروابط المشبوهة</h2><div class="res">✅ الميزة دي متكاملة في المساعد الذكي فوق\nادخل على المساعد الذكي وحط الرابط وهيقولك آمن ولا لا\n🔍 بنفحص: الروابط المختصرة - مواقع التصيد - الروابط المجانية</div><div style="text-align:center;margin-top:12px"><button onclick="openTool('ai')" style="padding:12px 24px;background:#00aaff;border:none;border-radius:10px;color:#fff;font-weight:800;cursor:pointer">افتح المساعد الذكي 🤖</button></div>`,
+pass:`<h2>🛡️ فحص قوة الباسورد</h2><div class="res">✅ الميزة دي متكاملة في المساعد الذكي\nادخل على المساعد وحط الباسورد وهيقيم قوته\n\n💪 باسورد قوي = حروف كبيرة + صغيرة + أرقام + رموز + 12 حرف على الأقل</div><div style="text-align:center;margin-top:12px"><button onclick="openTool('ai')" style="padding:12px 24px;background:#00aaff;border:none;border-radius:10px;color:#fff;font-weight:800;cursor:pointer">افتح المساعد الذكي 🤖</button></div>`
+};
+
+function openTool(id){
+document.getElementById('mod').innerHTML=`<div class="modal on" onclick="if(event.target==this)closeT()"><div class="box"><button class="cl" onclick="closeT()">X</button>${T[id]}</div></div>`;
 }
-function runCode(){document.getElementById('result').srcdoc=document.getElementById('code').value;}
-function send(){
-var v=document.getElementById('q').value; if(!v) return;
-var c=document.getElementById('chat'); c.innerHTML+='<div style="text-align:right;margin:6px 0"><span style="background:#143080;padding:8px;border-radius:8px;display:inline-block">'+v+'</span></div>';
-document.getElementById('q').value=''; c.innerHTML+='<div style="margin:6px 0"><span style="background:#1a2a4d;padding:8px;border-radius:8px;display:inline-block">الشرح: '+v+' ده نوع من انواع الهاكر اللي شرحناه فوق!</span></div>'; c.scrollTop=c.scrollHeight;
-}
-async function getIp(){try{let r=await fetch('https://api.ipify.org?format=json');let j=await r.json();document.getElementById('ip').innerText='IP بتاعك للتعليم: '+j.ip;}catch{}}
-window.onload=function(){runCode();getIp();}
+function closeT(){document.getElementById('mod').innerHTML='';}
 </script>
 </body>
 </html>
